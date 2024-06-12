@@ -4,6 +4,7 @@ import { Category } from 'src/app/model/category.model';
 import { Product } from 'src/app/model/product.model';
 import { ProductMenuComponent } from 'src/app/product-menu/product-menu.component';
 import { CategoryService } from 'src/app/services/category.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-category-list',
@@ -12,7 +13,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryListComponent {
  
-  constructor(private categoryService:CategoryService,private componentFactoryResolver: ComponentFactoryResolver){}
+  constructor(private categoryService:CategoryService,private dataService: DataService){}
   categoryList: Category[] = [];
   productList: Product[] = [];
   productName:string | undefined;
@@ -20,7 +21,7 @@ export class CategoryListComponent {
     id: 0,
     name: ''
   };
-  @ViewChild('container', { read: ProductMenuComponent }) container: ViewContainerRef | undefined;
+  //@ViewChild('container', { read: ProductMenuComponent }) container: ViewContainerRef | undefined;
   
   ngOnInit() {
        this.categoryService.GetAllCategories().subscribe(
@@ -30,10 +31,10 @@ export class CategoryListComponent {
       );
   }
 
-  // onItemSelect(event: any) {
-  //   this.currentCategory=event;
-  //   console.log(event.value); // You can handle the selected value here
-  // }
+  onItemSelect(event: any) {
+    this.currentCategory=event;
+    console.log(event.value); // You can handle the selected value here
+  }
   _productList(){
     return this.productList;
   }
@@ -47,21 +48,22 @@ export class CategoryListComponent {
       category: category
     };
     this.productList.push(newProduct);
+    this.dataService.updateProduct(newProduct);
   //  this.destroyAndCreateComponent();
   }
 
-  destroyAndCreateComponent() {
-    // Clear existing child components if any
-    this.container?.clear();
+  // destroyAndCreateComponent() {
+  //   // Clear existing child components if any
+  //   this.container?.clear();
 
-    // Create a component factory for the ChildComponent
-    const childComponentFactory = this.componentFactoryResolver.resolveComponentFactory(ProductMenuComponent);
+  //   // Create a component factory for the ChildComponent
+  //   const childComponentFactory = this.componentFactoryResolver.resolveComponentFactory(ProductMenuComponent);
 
-    // Create a new instance of the ChildComponent
-    const childComponentRef = this.container?.createComponent(childComponentFactory);
+  //   // Create a new instance of the ChildComponent
+  //   const childComponentRef = this.container?.createComponent(childComponentFactory);
 
-    // You can also pass inputs to the newly created child component
-    // childComponentRef.instance.inputProperty = value;
-  }
+  //   // You can also pass inputs to the newly created child component
+  //   // childComponentRef.instance.inputProperty = value;
+  // }
 
 }

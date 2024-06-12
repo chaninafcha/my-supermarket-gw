@@ -1,0 +1,52 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex {
+    flex: 1; /* This makes all flex items take equal space */
+    padding: 10px; /* Add padding between flex items */
+  }
+  
+  .p-col {
+    list-style: none; /* Remove bullet points from <ul> */
+    padding: 0;
+    margin: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .flex {
+      flex-basis: 50%; /* Two items per row on smaller screens */
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .flex {
+      flex-basis: 100%; /* One item per row on extra small screens */
+    }
+  }
+  
+  ul{
+    text-align: center;
+
+  }
+
+  li{
+    text-align: center;
+
+  }
+  
+  .custom-li {
+    padding: 5px;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+
+  h2{
+    display: flex;
+    font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #333; /* Custom text color */
+}

@@ -1,4 +1,9 @@
 <h2>יש לאסוף מוצרים אלו במחלקות המתאימות</h2>
-<ul *ngFor="let category of categories" >
-    <li *ngFor="let product of getProductsByCategory(category.id)">{{ product.name }}</li>
-</ul>
+
+<div class="flex-container">
+    <div *ngFor="let category of categories" class="flex">
+      <ul class="p-col" *ngIf="checkCategoryhasData(category.id)"> <b>{{ category.name}}</b> 
+        <li *ngFor="let product of getProductsByCategory(category.id)" class="custom-li">{{ product.name }}</li>
+      </ul>
+    </div>
+</div>
