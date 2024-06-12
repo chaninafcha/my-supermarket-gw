@@ -1,0 +1,4 @@
+<h2>יש לאסוף מוצרים אלו במחלקות המתאימות</h2>
+<ul *ngFor="let category of categories" >
+    <li *ngFor="let product of getProductsByCategory(category.id)">{{ product.name }}</li>
+</ul>
