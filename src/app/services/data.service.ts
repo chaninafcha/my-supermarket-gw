@@ -19,11 +19,8 @@ export class DataService {
   constructor() { }
 
   updateProduct(product: Product) {
-    this.product.push(product);
     this.productSubject.next(product);
   }
 
-  getProduct():Product[] {
-    return this.product;
-  }
+
 }

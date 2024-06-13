@@ -1,3 +1,4 @@
+
 /* src/app/app.component.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
@@ -8,8 +9,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-align: right;
   direction: rtl;
+  text-align: right;
 }
 
 .container {
@@ -28,43 +29,44 @@ body {
 
 .flex-container {
   display: flex;
-  flex-wrap: wrap; /* Enable wrapping on smaller screens */
-  gap: 20px; /* Space between flex items */
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .flex-item {
-  flex: 1 1 50%; /* Flexbox shorthand: grow, shrink, basis */
-  padding: 10px;
-  border-radius: 8px;
+  flex: 1 1 calc(50% - 20px); /* Two items per row with gap */
+}
+
+.category-container {
   background-color: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.product-input {
-  width: calc(100% - 100px); /* Adjust based on button width */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+.category-container h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #007bff;
 }
 
-
-
-
-
-.product-list {
+.category-container ul {
   list-style-type: none;
   padding: 0;
-  margin: 20px 0;
-  border-top: 1px solid #ddd;
 }
 
-.product-list li {
-  padding: 10px;
+.custom-li {
+  padding: 5px 0;
   border-bottom: 1px solid #ddd;
-  transition: background-color 0.3s;
-  
 }
 
-.product-list li:hover {
-  background-color: #f9f9f9;
+/* Decorative Lines */
+.flex-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -10px;
+  width: 1px;
+  background-color: #ddd;
 }

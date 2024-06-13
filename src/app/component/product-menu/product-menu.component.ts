@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../model/product.model';
-import { Category } from '../model/category.model';
-import { DataService } from '../services/data.service';
+import { Product } from '../../model/product.model';
+import { Category } from '../../model/category.model';
+import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -20,13 +20,14 @@ export class ProductMenuComponent {
 
   ngOnInit() {
     this.productSubscription = this.dataService.product$.subscribe(product => {
+      if(product.name!="")
       this.productList.push(product);
     });
   }
 
   getProductsByCategory(category: number): Product[] {
-    let a= this.productList.filter(product => product.category!=null && product.category.id == category);
-    return a;
+    let item= this.productList.filter(product => product.category!=null && product.category.id == category);
+    return item;
   }
 
   checkCategoryhasData(category: number):boolean

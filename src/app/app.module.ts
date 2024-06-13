@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ListboxModule } from 'primeng/listbox';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-import { ProductMenuComponent } from './product-menu/product-menu.component';
+import { ProductMenuComponent } from './component/product-menu/product-menu.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
+import { productReducer, productsFeatureKey } from './services/product.reducer';
+
 
 
 
@@ -29,7 +36,10 @@ import { ProductMenuComponent } from './product-menu/product-menu.component';
     AppRoutingModule,
     HttpClientModule,
     ListboxModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({ [productsFeatureKey]: productReducer }),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
   bootstrap: [AppComponent]

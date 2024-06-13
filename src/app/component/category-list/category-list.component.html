@@ -1,22 +1,26 @@
-<h2 style="justify-content: center;" >Shopping List</h2>
-<div class="row-container">
-    <div class="p-col">
-        <!-- Your third item -->
-        <p-button label="הוסף מוצר" class="round-button" (click)="onClick(productNameInput.value,category.value)"></p-button>
-    </div>
-    <div class="p-col">
-        <!-- Your second item -->
-        <p-listbox  #category [options]="categoryList" optionLabel="name" [style]="{'width':'15rem'}" (onChange)="onItemSelect($event)">
-            <ng-template let-item pTemplate="item">
-                {{item.name}}
-            </ng-template>
+<div class="container">
+    <h2 class="center-text">Shopping List</h2>
+    <h4 class="center-text">סה"כ {{ productCount$ | async }} מוצרים</h4>
+  
+    <div class="flex-container">
+      <div class="flex-item">
+        <input type="text" #productNameInput class="product-input" placeholder="הוסף שם מוצר" />
+      </div>
+  
+      <div class="flex-item">
+        <p-listbox #category [options]="categoryList" optionLabel="name" (onChange)="onItemSelect($event)">
+          <ng-template let-item pTemplate="item">
+            {{ item.name }}
+          </ng-template>
         </p-listbox>
+      </div>
+      <div class="flex-item">
+        <p-button label="הוסף מוצר"  (click)="onClick(productNameInput.value, category.value)"></p-button>
+      </div>
+  
     </div>
-  <!-- {{category.value|json}} -->
-    <div class="p-col">
-
-    <input type="text" #productNameInput pInputText placeholder="הוסף שם מוצר" />
-    </div>
-</div>
-<app-product-menu   [categories]="categoryList"></app-product-menu>
-
+  
+    <app-product-menu [categories]="categoryList"></app-product-menu>
+      
+  </div>
+  
