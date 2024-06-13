@@ -1,6 +1,9 @@
 # MySupermarket
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+## chani
+Written in angular 16, primeNG design library is used
+The total component was written using store ngrx
 
 ## Development server
 
